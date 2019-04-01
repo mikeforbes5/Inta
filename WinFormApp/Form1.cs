@@ -52,17 +52,17 @@ namespace WindowsFormsApp15
                     value = comboBox1.SelectedItem.ToString();
                 }
             }));
-            if (value == "IDC")
+            if (value == "Vendor1")
             {
                 label2.Visible = true;
                 comboBox2.Show();
             }
-            else if (value == "EDI")
+            else if (value == "Vendor2")
             {
                 label2.Visible = false;
                 comboBox2.Hide();
             }
-            else if (value == "CDS")
+            else if (value == "Vendor3")
             {
                 label2.Visible = false;
                 comboBox2.Hide();
