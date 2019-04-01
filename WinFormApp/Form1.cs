@@ -165,74 +165,12 @@ namespace WindowsFormsApp15
                     }));
                     if (value == "EDI")
                     {
-                        textBox1.Text = @"select distinct a.vndr_nm,a.FFID, a.starttime, b.* from
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_MT564_EDI_EVENT t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id, 0, 16)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id ='" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.tag_name, t564.raw_key, t564.raw_value from CORE_FEED_CASTLE.RAW_MT564_EDI_EVENT t564) b
-where a.caid = b.caid
-
-
-UNION
-
-select distinct a.vndr_nm,a.FFID, a.starttime, b.* from
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_MT564_EDI_EVENT t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id, 0, 16)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id = '" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.tag_name, t564.raw_key, t564.raw_value from CORE_FEED_CASTLE.RAW_MT564_EDI_OPTION t564) b
-where a.caid = b.caid
-
-
-UNION
-
-select distinct a.vndr_nm,a.FFID, a.starttime, b.* from
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_MT564_EDI_EVENT t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id, 0, 16)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id = '" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.tag_name, t564.raw_key, t564.raw_value from CORE_FEED_CASTLE.RAW_MT564_EDI_PAYOUT t564) b
-where a.caid = b.caid
-order by starttime asc
+                        textBox1.Text = @"select * from MCAtable1
 ";
                     }
                     else if (value == "IDC")
                     {
-                        textBox1.Text = @"select distinct a.vndr_nm,a.FFID, a.starttime, b.* from 
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_IDC_EVENTS t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id,0,10)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id = '" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.local_name, t564.field_name, t564.field_value from CORE_FEED_CASTLE.RAW_IDC_EVENTS t564) b
-where a.caid = b.caid  
-
-UNION
-
-select distinct a.vndr_nm,a.FFID, a.starttime, b.* from 
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_IDC_EVENTS t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id,0,10)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id = '" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.local_name, t564.field_name, t564.field_value from CORE_FEED_CASTLE.RAW_IDC_OPTIONS t564) b
-where a.caid = b.caid
-
-UNION
-
-select distinct a.vndr_nm,a.FFID, a.starttime, b.* from 
-(select distinct t21.vndr_nm, t564.caid, t564.FFID, trunc(ff.starttime) as starttime from CORE_MCA.NORMALIZE_DS_COMPOSITE_MAPPING tn, CORE_MCA.TBGCA21_VNDR_RCRD t21, CORE_FEED_CASTLE.RAW_IDC_EVENTS t564, feedfile ff
-where tn.NORMALIZE_ID = t21.VNDR_NTC_ID
-and t564.caid = substr(vndr_ca_id,0,16)
-and ff.pkey = t564.ffid
-and t21.vndr_ntc_id = '" + caid + @"') a,
-(select t564.caid, t564.field_path, t564.local_name, t564.field_name, t564.field_value from CORE_FEED_CASTLE.RAW_IDC_PAYOUTS t564) b
-where a.caid = b.caid
-order by starttime asc";
+                        textBox1.Text = @" select * from MCAtable2";
                     }
                     else
                         throw new NotImplementedException();
